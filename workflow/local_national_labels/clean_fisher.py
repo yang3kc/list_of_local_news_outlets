@@ -48,6 +48,10 @@ fisher_df = fisher_df[
     ~((fisher_df.domain == "cnn.com") & (fisher_df.classification == "international"))
 ]
 
+fisher_df["domain"] = fisher_df.domain.str.lower()
+# Remove the ones without a dot
+fisher_df = fisher_df[fisher_df["domain"].str.contains("\\.")]
+
 # Fisher et al. didn't provide a clear criteria to distinguish between local and regional domains.
 # Moreover, they often treat them as the same category in the analysis.
 # Therefore, we reclassify regional as local to simplify the analysis.
