@@ -1,0 +1,23 @@
+from pathlib import Path
+
+############################################################################
+############################################################################
+# Meta info
+############################################################################
+DATA_ROOT = Path("../../data")
+RAW_DATA_ROOT = DATA_ROOT / "raw_data"
+INTERMEDIATE_DATA_ROOT = DATA_ROOT / "intermediate_data"
+OUTPUT_ROOT = DATA_ROOT / "output"
+
+############################################################################
+############################################################################
+# Workflow
+############################################################################
+
+HOHENBERG_RAW = RAW_DATA_ROOT / "hohenberg.csv"
+HOHENBERG_CLEANED = INTERMEDIATE_DATA_ROOT / "hohenberg_cleand.csv"
+
+rule clean_hohenberg:
+    input: HOHENBERG_RAW
+    output: HOHENBERG_CLEANED
+    shell: "python clean_hohenberg.py {input} {output}"
