@@ -51,7 +51,7 @@ fisher_df = fisher_df[
 # Fisher et al. didn't provide a clear criteria to distinguish between local and regional domains.
 # Moreover, they often treat them as the same category in the analysis.
 # Therefore, we reclassify regional as local to simplify the analysis.
-fisher_df["classification"].loc[fisher_df.classification == "regional"] = "local"
+fisher_df.loc[fisher_df.classification == "regional", "classification"] = "local"
 
 fisher_df["dataset"] = "fisher"
 
