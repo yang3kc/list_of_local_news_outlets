@@ -48,3 +48,12 @@ rule clean_horne:
     input: HORNE_RAW
     output: HORNE_CLEANED
     shell: "uv run clean_horne.py {input} {output}"
+
+
+ABYZ_RAW = RAW_DATA_ROOT / "abyz.csv"
+ABYZ_CLEANED = INTERMEDIATE_DATA_ROOT / "abyz_cleand.csv"
+
+rule clean_abyz:
+    input: ABYZ_RAW
+    output: ABYZ_CLEANED
+    shell: "uv run clean_abyz.py {input} {output}"
