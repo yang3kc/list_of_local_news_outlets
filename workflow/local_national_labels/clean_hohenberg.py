@@ -8,7 +8,9 @@ classification as local or national news outlets. It performs the following step
 3. Filters out rows with missing classifications
 4. Keeps only the domain and classification columns
 5. Adds a 'dataset' column to track the data source
-6. Saves the cleaned data to a new CSV file
+6. Converts all domain names to lowercase
+7. Removes duplicate domain entries
+8. Saves the cleaned data to a new CSV file
 
 Args:
     input_file (str): Path to the raw Hohenberg CSV file
@@ -32,6 +34,9 @@ hohenberg_raw_df.rename(columns={"type": "classification"}, inplace=True)
 hohenberg_df = hohenberg_raw_df[hohenberg_raw_df["classification"].notna()][
     ["domain", "classification"]
 ]
+
+hohenberg_df["domain"] = hohenberg_df.domain.str.lower()
+hohenberg_df.drop_duplicates(inplace=True)
 
 hohenberg_df["dataset"] = "hohenberg"
 
