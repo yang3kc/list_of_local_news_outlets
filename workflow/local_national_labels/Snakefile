@@ -21,3 +21,12 @@ rule clean_hohenberg:
     input: HOHENBERG_RAW
     output: HOHENBERG_CLEANED
     shell: "python clean_hohenberg.py {input} {output}"
+
+
+FISHER_RAW = RAW_DATA_ROOT / "fisher.csv"
+FISHER_CLEANED = INTERMEDIATE_DATA_ROOT / "fisher_cleand.csv"
+
+rule clean_fisher:
+    input: FISHER_RAW
+    output: FISHER_CLEANED
+    shell: "python clean_fisher.py {input} {output}"
