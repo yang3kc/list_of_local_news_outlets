@@ -39,3 +39,12 @@ rule clean_yin:
     input: YIN_RAW
     output: YIN_CLEANED
     shell: "python clean_yin.py {input} {output}"
+
+
+HORNE_RAW = RAW_DATA_ROOT / "horne.csv"
+HORNE_CLEANED = INTERMEDIATE_DATA_ROOT / "horne_cleand.csv"
+
+rule clean_horne:
+    input: HORNE_RAW
+    output: HORNE_CLEANED
+    shell: "uv run clean_horne.py {input} {output}"
