@@ -16,7 +16,7 @@ US_STATES_ABBR = RAW_DATA_ROOT / "us_state_abbr.csv"
 # Workflow
 
 YIN_RAW = RAW_DATA_ROOT / "yin.csv"
-YIN_CLEANED = INTERMEDIATE_DATA_ROOT / "yin_cleand.csv"
+YIN_CLEANED = INTERMEDIATE_DATA_ROOT / "yin_cleaned.csv"
 
 rule clean_yin:
     input: YIN_RAW, US_STATES_ABBR
@@ -24,9 +24,17 @@ rule clean_yin:
     shell: "python clean_yin_location.py {input} {output}"
 
 HORNE_RAW = RAW_DATA_ROOT / "horne.csv"
-HORNE_CLEANED = INTERMEDIATE_DATA_ROOT / "horne_cleand.csv"
+HORNE_CLEANED = INTERMEDIATE_DATA_ROOT / "horne_cleaned.csv"
 
 rule clean_horne:
     input: HORNE_RAW, US_STATES_ABBR
     output: HORNE_CLEANED
     shell: "python clean_horne_location.py {input} {output}"
+
+FISHER_RAW = RAW_DATA_ROOT / "fisher.csv"
+FISHER_CLEANED = INTERMEDIATE_DATA_ROOT / "fisher_cleaned.csv"
+
+rule clean_fisher:
+    input: FISHER_RAW, US_STATES_ABBR
+    output: FISHER_CLEANED
+    shell: "python clean_fisher_location.py {input} {output}"
