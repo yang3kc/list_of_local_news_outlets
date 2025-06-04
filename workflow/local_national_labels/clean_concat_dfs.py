@@ -54,4 +54,6 @@ df.drop_duplicates(inplace=True)
 print(f"After removing duplicates: {len(df)} domains")
 
 df.drop_duplicates(inplace=True)
-df.to_csv(output_file, index=False)
+
+cols_to_keep = ["domain", "classification", "dataset"]
+df[cols_to_keep].to_csv(output_file, index=False)
