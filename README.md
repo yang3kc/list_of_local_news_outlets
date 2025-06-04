@@ -13,7 +13,7 @@ This repository consolidates several open datasets to create a unified list of n
 1. Install Python 3.12 or later.
 2. Install the dependencies with [uv](https://github.com/astral-sh/uv):
    ```bash
-   uv pip install -r uv.lock
+   uv sync
    ```
 3. Run the workflow to build the final list:
    ```bash
@@ -23,5 +23,5 @@ This repository consolidates several open datasets to create a unified list of n
 
 ## Data sources
 
-The raw datasets originate from multiple projects such as Hohenberg, Fisher, Yin, Horne, ABYZ and others. See [data/raw_data/README.md](data/raw_data/README.md) for the full list of sources.
-
+The raw datasets originate from multiple projects such as Hohenberg, Fisher, Yin, Horne, ABYZ and others.
+See [data/raw_data/README.md](data/raw_data/README.md) for the full list of sources.

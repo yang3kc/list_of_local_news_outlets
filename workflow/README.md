@@ -9,4 +9,3 @@ The [local_national_labels](./local_national_labels) workflow merges datasets fr
 ## Local news locations
 
 `local_news_locations` (not yet implemented) will build a mapping between local outlets and the U.S. states they serve.
-
