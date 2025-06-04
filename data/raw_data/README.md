@@ -1,8 +1,8 @@
 # Raw Data
 
-The list of domains with classifications came from the following sources:
+The following datasets were combined to build the final list of news domains:
 
-| Dataset | Dataset name | Link |
+| Description | Code | Link |
 | --- | --- | --- |
 | A list of over 5000 US news domains and their social media accounts. | `hohenberg` | https://github.com/ercexpo/us-news-domains |
 | Local News Social Media Dataset | `naaman` | https://github.com/sTechLab/local-news-dataset |
@@ -11,3 +11,4 @@ The list of domains with classifications came from the following sources:
 | NELA-Local | `horne` | https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/GFE66K |
 | ABYZ dataset | `abyz` | http://www.abyznewslinks.com/unite.htm |
 | Northwestern University local news dataset | `nwu` | https://localnewsinitiative.northwestern.edu |
+

@@ -1,11 +1,12 @@
 # Introduction
 
-This directory contains the workflow for the project.
+This directory contains Snakemake workflows and helper utilities.
 
 ## Local national labels
 
-[local_national_labels](./local_national_labels) contains the workflow to generate the list with local and national news domains, with corresponding labels.
+The [local_national_labels](./local_national_labels) workflow merges datasets from `data/raw_data` to produce `data/output/local_national_labels.csv`.
 
 ## Local news locations
 
-[local_news_locations](./local_news_locations) contains the workflow to generate the list with local news outlets and their target locations (U.S. states).
+`local_news_locations` (not yet implemented) will build a mapping between local outlets and the U.S. states they serve.
+
