@@ -49,11 +49,15 @@ df = df[df.path == ""]
 df = df[df.domain != ""]
 print(f"After cleaning: {len(df)} domains")
 
+# Only keep the domains with local or national labels
+# Ignore other labels: international, technical, etc.
+classifications_to_keep = set(["local", "national"])
+df = df[df.classification.isin(classifications_to_keep)]
+print(f"After filtering: {len(df)} domains")
+
 # Remove duplicates
 df.drop_duplicates(inplace=True)
 print(f"After removing duplicates: {len(df)} domains")
-
-df.drop_duplicates(inplace=True)
 
 cols_to_keep = ["domain", "classification", "dataset"]
 df[cols_to_keep].to_csv(output_file, index=False)
