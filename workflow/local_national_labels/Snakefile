@@ -61,6 +61,15 @@ rule clean_abyz:
     output: ABYZ_CLEANED
     shell: "uv run clean_abyz.py {input} {output}"
 
+NWU_RAW = RAW_DATA_ROOT / "nwu.csv"
+NWU_CLEANED = INTERMEDIATE_DATA_ROOT / "nwu_cleand.csv"
+
+rule clean_nwu:
+    input: NWU_RAW
+    output: NWU_CLEANED
+    shell: "uv run clean_nwu.py {input} {output}"
+
+
 ############################################################################
 # Concatenate all the cleaned datasets and clean
 CONCAT_CLEANED_DATA = INTERMEDIATE_DATA_ROOT / "concat_cleaned_data.csv"
@@ -73,6 +82,7 @@ rule concat_cleaned_data:
         YIN_CLEANED,
         HORNE_CLEANED,
         ABYZ_CLEANED,
+        NWU_CLEANED,
     output: CONCAT_CLEANED_DATA
     shell: "uv run concat_dfs.py {input} {output}"
 
