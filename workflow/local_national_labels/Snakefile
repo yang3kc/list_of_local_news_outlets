@@ -6,7 +6,7 @@ from pathlib import Path
 ############################################################################
 DATA_ROOT = Path("../../data")
 RAW_DATA_ROOT = DATA_ROOT / "raw_data"
-INTERMEDIATE_DATA_ROOT = DATA_ROOT / "intermediate_data"
+INTERMEDIATE_DATA_ROOT = DATA_ROOT / "intermediate_data_labels"
 OUTPUT_ROOT = DATA_ROOT / "output"
 
 ############################################################################
