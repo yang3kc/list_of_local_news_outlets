@@ -26,4 +26,5 @@ df["dataset"] = "nwu"
 # All the domains in the nwu dataset are local
 df["classification"] = "local"
 
-df.to_csv(output_file, index=False)
+cols_to_keep = ["domain", "dataset", "classification"]
+df[cols_to_keep].to_csv(output_file, index=False)
