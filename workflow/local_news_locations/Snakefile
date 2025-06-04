@@ -70,3 +70,13 @@ rule clean_concat_cleaned_data:
     input: CONCAT_CLEANED_DATA
     output: CONCAT_CLEANED_DATA_CLEANED
     shell: "uv run clean_concat_dfs.py {input} {output}"
+
+############################################################################
+# Assign state to domains
+
+FINAL_TABLE = OUTPUT_ROOT / "local_news_locations.csv"
+
+rule assign_state:
+    input: CONCAT_CLEANED_DATA_CLEANED
+    output: FINAL_TABLE
+    shell: "uv run assign_state.py {input} {output}"
