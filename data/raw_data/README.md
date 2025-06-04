@@ -10,3 +10,4 @@ The list of domains with classifications came from the following sources:
 | Local News Dataset 2018 | `yin` | https://github.com/yinleon/LocalNewsDataset |
 | NELA-Local | `horne` | https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/GFE66K |
 | ABYZ dataset | `abyz` | http://www.abyznewslinks.com/unite.htm |
+| Northwestern University local news dataset | `nwu` | https://localnewsinitiative.northwestern.edu |
