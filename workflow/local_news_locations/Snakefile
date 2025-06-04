@@ -1,0 +1,24 @@
+from pathlib import Path
+
+############################################################################
+############################################################################
+# Meta info
+############################################################################
+DATA_ROOT = Path("../../data")
+RAW_DATA_ROOT = DATA_ROOT / "raw_data"
+INTERMEDIATE_DATA_ROOT = DATA_ROOT / "intermediate_data_locations"
+OUTPUT_ROOT = DATA_ROOT / "output"
+
+US_STATES_ABBR = RAW_DATA_ROOT / "us_state_abbr.csv"
+
+############################################################################
+############################################################################
+# Workflow
+
+YIN_RAW = RAW_DATA_ROOT / "yin.csv"
+YIN_CLEANED = INTERMEDIATE_DATA_ROOT / "yin_cleand.csv"
+
+rule clean_yin:
+    input: YIN_RAW, US_STATES_ABBR
+    output: YIN_CLEANED
+    shell: "python clean_yin_location.py {input} {output}"
