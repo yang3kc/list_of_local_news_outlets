@@ -38,3 +38,11 @@ rule clean_fisher:
     input: FISHER_RAW, US_STATES_ABBR
     output: FISHER_CLEANED
     shell: "python clean_fisher_location.py {input} {output}"
+
+ABYZ_RAW = RAW_DATA_ROOT / "abyz.csv"
+ABYZ_CLEANED = INTERMEDIATE_DATA_ROOT / "abyz_cleaned.csv"
+
+rule clean_abyz:
+    input: ABYZ_RAW, US_STATES_ABBR
+    output: ABYZ_CLEANED
+    shell: "python clean_abyz_location.py {input} {output}"
