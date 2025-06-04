@@ -80,3 +80,13 @@ rule clean_concat_cleaned_data:
     input: CONCAT_CLEANED_DATA
     output: CONCAT_CLEANED_DATA_CLEANED
     shell: "uv run clean_concat_dfs.py {input} {output}"
+
+############################################################################
+# Generate the final table with labels
+
+FINAL_TABLE = OUTPUT_ROOT / "local_national_labels.csv"
+
+rule generate_final_table:
+    input: CONCAT_CLEANED_DATA_CLEANED
+    output: FINAL_TABLE
+    shell: "uv run generate_final_table.py {input} {output}"
