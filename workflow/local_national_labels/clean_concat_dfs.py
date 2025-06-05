@@ -31,7 +31,7 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 import pandas as pd
-from url_utils import extract_domain, extract_path
+from url_utils import extract_domain, extract_path, extract_suffix
 
 
 input_file = sys.argv[1]
@@ -54,6 +54,12 @@ print(f"After cleaning: {len(df)} domains")
 classifications_to_keep = set(["local", "national"])
 df = df[df.classification.isin(classifications_to_keep)]
 print(f"After filtering: {len(df)} domains")
+
+# Remove domains with suffix in the following list:
+# gov, mil, edu
+suffixes_to_remove = set(["gov", "mil", "edu"])
+df = df[~df.domain.apply(extract_suffix).isin(suffixes_to_remove)]
+print(f"After removing suffixes: {len(df)} domains")
 
 # Remove duplicates
 df.drop_duplicates(inplace=True)
