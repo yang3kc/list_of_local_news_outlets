@@ -50,6 +50,13 @@ rule clean_abyz:
     output: ABYZ_CLEANED
     shell: "python clean_abyz_location.py {input} {output}"
 
+NWU_RAW = RAW_DATA_ROOT / "nwu.csv"
+NWU_CLEANED = INTERMEDIATE_DATA_ROOT / "nwu_cleaned.csv"
+
+rule clean_nwu:
+    input: NWU_RAW, US_STATES_ABBR
+    output: NWU_CLEANED
+    shell: "python clean_nwu_location.py {input} {output}"
 
 ############################################################################
 # Combine all datasets
