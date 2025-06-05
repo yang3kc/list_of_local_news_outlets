@@ -63,6 +63,7 @@ rule clean_nwu:
 
 CONCAT_CLEANED_DATA = INTERMEDIATE_DATA_ROOT / "concat_cleaned_data.csv"
 CONCAT_CLEANED_DATA_CLEANED = INTERMEDIATE_DATA_ROOT / "concat_cleaned_data_cleaned.csv"
+LOCAL_NATIONAL_LABELS = OUTPUT_ROOT / "local_national_labels.csv"
 
 rule combine_all:
     input:
@@ -75,7 +76,7 @@ rule combine_all:
     shell: "uv run ../local_national_labels/concat_dfs.py {input} {output}"
 
 rule clean_concat_cleaned_data:
-    input: CONCAT_CLEANED_DATA
+    input: CONCAT_CLEANED_DATA, LOCAL_NATIONAL_LABELS
     output: CONCAT_CLEANED_DATA_CLEANED
     shell: "uv run clean_concat_dfs.py {input} {output}"
 
