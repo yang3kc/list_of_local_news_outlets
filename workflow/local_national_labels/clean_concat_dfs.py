@@ -14,6 +14,7 @@ The script performs the following steps:
 2. Extracts clean domain names using extract_domain()
 3. Removes entries with paths using extract_path()
 4. Removes entries with invalid domains
+5. Removes entries with gov, mil, edu suffixes
 5. Removes duplicate entries
 6. Saves cleaned data to output CSV
 
