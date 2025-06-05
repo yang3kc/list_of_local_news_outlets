@@ -8,4 +8,4 @@ The [local_national_labels](./local_national_labels) workflow merges datasets fr
 
 ## Local news locations
 
-`local_news_locations` (not yet implemented) will build a mapping between local outlets and the U.S. states they serve.
+The [local_news_locations](./local_news_locations) workflow builds a mapping between local outlets and the U.S. states they serve. The final table is written to `data/output/local_news_locations.csv`.

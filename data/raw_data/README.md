@@ -11,3 +11,4 @@ The following datasets were combined to build the final list of news domains:
 | NELA-Local | `horne` | https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/GFE66K |
 | ABYZ dataset | `abyz` | http://www.abyznewslinks.com/unite.htm |
 | Northwestern University local news dataset | `nwu` | https://localnewsinitiative.northwestern.edu |
+| U.S. state names and abbreviations | `us_state_abbr` | https://gist.github.com/rogerallen/1583593 |
