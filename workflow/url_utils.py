@@ -120,3 +120,16 @@ def extract_path(url):
 
     except Exception:
         return ""
+
+
+def extract_suffix(url):
+    """
+    Extract the top-level domain suffix from the URL.
+
+    Returns:
+        str: The top-level domain suffix (e.g. 'com', 'org', 'co.uk')
+    """
+    ext = tldextract.extract(url)
+    if ext.suffix:
+        return ext.suffix
+    return ""
