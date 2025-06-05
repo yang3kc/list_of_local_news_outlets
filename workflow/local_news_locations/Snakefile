@@ -1,0 +1,90 @@
+from pathlib import Path
+
+############################################################################
+############################################################################
+# Meta info
+############################################################################
+DATA_ROOT = Path("../../data")
+RAW_DATA_ROOT = DATA_ROOT / "raw_data"
+INTERMEDIATE_DATA_ROOT = DATA_ROOT / "intermediate_data_locations"
+OUTPUT_ROOT = DATA_ROOT / "output"
+
+US_STATES_ABBR = RAW_DATA_ROOT / "us_state_abbr.csv"
+
+############################################################################
+############################################################################
+# Workflow
+
+############################################################################
+# Clean individual datasets
+
+YIN_RAW = RAW_DATA_ROOT / "yin.csv"
+YIN_CLEANED = INTERMEDIATE_DATA_ROOT / "yin_cleaned.csv"
+
+rule clean_yin:
+    input: YIN_RAW, US_STATES_ABBR
+    output: YIN_CLEANED
+    shell: "python clean_yin_location.py {input} {output}"
+
+HORNE_RAW = RAW_DATA_ROOT / "horne.csv"
+HORNE_CLEANED = INTERMEDIATE_DATA_ROOT / "horne_cleaned.csv"
+
+rule clean_horne:
+    input: HORNE_RAW, US_STATES_ABBR
+    output: HORNE_CLEANED
+    shell: "python clean_horne_location.py {input} {output}"
+
+FISHER_RAW = RAW_DATA_ROOT / "fisher.csv"
+FISHER_CLEANED = INTERMEDIATE_DATA_ROOT / "fisher_cleaned.csv"
+
+rule clean_fisher:
+    input: FISHER_RAW, US_STATES_ABBR
+    output: FISHER_CLEANED
+    shell: "python clean_fisher_location.py {input} {output}"
+
+ABYZ_RAW = RAW_DATA_ROOT / "abyz.csv"
+ABYZ_CLEANED = INTERMEDIATE_DATA_ROOT / "abyz_cleaned.csv"
+
+rule clean_abyz:
+    input: ABYZ_RAW, US_STATES_ABBR
+    output: ABYZ_CLEANED
+    shell: "python clean_abyz_location.py {input} {output}"
+
+NWU_RAW = RAW_DATA_ROOT / "nwu.csv"
+NWU_CLEANED = INTERMEDIATE_DATA_ROOT / "nwu_cleaned.csv"
+
+rule clean_nwu:
+    input: NWU_RAW, US_STATES_ABBR
+    output: NWU_CLEANED
+    shell: "python clean_nwu_location.py {input} {output}"
+
+############################################################################
+# Combine all datasets
+
+CONCAT_CLEANED_DATA = INTERMEDIATE_DATA_ROOT / "concat_cleaned_data.csv"
+CONCAT_CLEANED_DATA_CLEANED = INTERMEDIATE_DATA_ROOT / "concat_cleaned_data_cleaned.csv"
+
+rule combine_all:
+    input:
+        YIN_CLEANED,
+        HORNE_CLEANED,
+        FISHER_CLEANED,
+        ABYZ_CLEANED,
+        NWU_CLEANED,
+    output: CONCAT_CLEANED_DATA
+    shell: "uv run ../local_national_labels/concat_dfs.py {input} {output}"
+
+rule clean_concat_cleaned_data:
+    input: CONCAT_CLEANED_DATA
+    output: CONCAT_CLEANED_DATA_CLEANED
+    shell: "uv run clean_concat_dfs.py {input} {output}"
+
+############################################################################
+# Assign state to domains
+
+FINAL_TABLE = OUTPUT_ROOT / "local_news_locations.csv"
+
+rule assign_state:
+    input: CONCAT_CLEANED_DATA_CLEANED
+    output: FINAL_TABLE
+    shell: "uv run assign_state.py {input} {output}"
