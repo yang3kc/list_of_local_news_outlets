@@ -69,7 +69,8 @@ rule combine_all:
         YIN_CLEANED,
         HORNE_CLEANED,
         FISHER_CLEANED,
-        ABYZ_CLEANED
+        ABYZ_CLEANED,
+        NWU_CLEANED,
     output: CONCAT_CLEANED_DATA
     shell: "uv run ../local_national_labels/concat_dfs.py {input} {output}"
 
