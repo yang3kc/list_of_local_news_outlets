@@ -39,8 +39,10 @@ location_path = sys.argv[1]
 output_path = sys.argv[-1]
 
 location_all_df = pd.read_csv(location_path)
+print(f"Loaded {len(location_all_df)} rows from {location_path}")
 
 domain_state_unique_pairs = location_all_df[["domain", "state"]].drop_duplicates()
+print(f"After dropping duplicates, {len(domain_state_unique_pairs)} rows remain")
 
 domain_num_unique_states = domain_state_unique_pairs.domain.value_counts()
 
@@ -50,6 +52,9 @@ domain_with_consistent_state_set = set(
 domain_with_consistent_state_df = domain_state_unique_pairs[
     domain_state_unique_pairs.domain.isin(domain_with_consistent_state_set)
 ]
+print(
+    f"After dropping domains with inconsistent state assignments, {len(domain_with_consistent_state_df)} rows remain"
+)
 
 
 domain_with_consistent_state_df.to_csv(output_path, index=False)
